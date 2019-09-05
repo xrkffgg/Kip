@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <k-ip/>
+    <k-ip
+      style="width: 276px;"
+      v-model="arr"
+    />
   </div>
 </template>
 
@@ -10,6 +13,11 @@ export default {
   name: 'app',
   components: {
     'k-ip':kip,
+  },
+  data() {
+    return {
+      arr: [],
+    }
   },
 }
 </script>

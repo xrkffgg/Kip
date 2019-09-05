@@ -10,16 +10,16 @@
       ]"
     >
       <template>
-        <div class="inner-box">
+        <div class="inner-box" :class="focused ? 'inner-box-focus' : ''">
           <input
             class="inner"
-            v-bind="$attrs"
+            v-bind="$attrs0"
             :disabled="inputDisabled"
             :readonly="readonly"
             type="text"
             maxlength="3"
             autocomplete="off"
-            ref="input"
+            ref="input1"
             @compositionstart="handleCompositionStart"
             @compositionupdate="handleCompositionUpdate"
             @compositionend="handleCompositionEnd"
@@ -28,15 +28,16 @@
             @blur="handleBlur"
             @change="handleChange"
           >
+          <div class="ip-point">.</div>
           <input
             class="inner"
-            v-bind="$attrs"
+            v-bind="$attrs1"
             :disabled="inputDisabled"
             :readonly="readonly"
             type="text"
             maxlength="3"
             autocomplete="off"
-            ref="input"
+            ref="input2"
             @compositionstart="handleCompositionStart"
             @compositionupdate="handleCompositionUpdate"
             @compositionend="handleCompositionEnd"
@@ -45,15 +46,16 @@
             @blur="handleBlur"
             @change="handleChange"
           >
+          <div class="ip-point">.</div>
           <input
             class="inner"
-            v-bind="$attrs"
+            v-bind="$attrs2"
             :disabled="inputDisabled"
             :readonly="readonly"
             type="text"
             maxlength="3"
             autocomplete="off"
-            ref="input"
+            ref="input3"
             @compositionstart="handleCompositionStart"
             @compositionupdate="handleCompositionUpdate"
             @compositionend="handleCompositionEnd"
@@ -62,15 +64,16 @@
             @blur="handleBlur"
             @change="handleChange"
           >
+          <div class="ip-point">.</div>
           <input
             class="inner"
-            v-bind="$attrs"
+            v-bind="$attrs3"
             :disabled="inputDisabled"
             :readonly="readonly"
             type="text"
             maxlength="3"
             autocomplete="off"
-            ref="input"
+            ref="input4"
             @compositionstart="handleCompositionStart"
             @compositionupdate="handleCompositionUpdate"
             @compositionend="handleCompositionEnd"
@@ -91,7 +94,7 @@ export default {
   name: 'kip',
   data () {
     return {
-      
+      focused: false,
     }
   },
 
@@ -107,8 +110,8 @@ export default {
       return this.disabled;
     },
     inputSize() {
-        return this.size;
-      },
+      return this.size;
+    },
   },
 
   methods: {
@@ -181,31 +184,13 @@ export default {
     width: 100%;
 
     .inner-box{
-      min-width: 260px;
+      min-width: 276px;
       -webkit-appearance: none;
       background-color: #fff;
       background-image: none;
       border-radius: 4px;
       border: 1px solid #dcdfe6;
       box-sizing: border-box;
-    }
-
-    .inner {
-      -webkit-appearance: none;
-      background-color: #fff;
-      background-image: none;
-      border-radius: 4px;
-      border: 1px solid #dcdfe6;
-      box-sizing: border-box;
-      color: #606266;
-      display: inline-block;
-      font-size: inherit;
-      height: 40px;
-      line-height: 40px;
-      outline: none;
-      padding: 0 15px;
-      transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-      min-width: 60px;
 
       &::placeholder {
         color: #C0C4CC;
@@ -214,11 +199,35 @@ export default {
       &:hover {
         border-color: #C0C4CC;
       }
+    }
 
-      &:focus {
-        outline: none;
-        border-color: #409EFF;
-      }
+    .inner-box-focus {
+      border-color: #409EFF !important;
+    }
+
+    .inner {
+      -webkit-appearance: none;
+      background-color: #fff;
+      background-image: none;
+      border: 0;
+      border-radius: 4px;
+      color: #606266;
+      display: inline-block;
+      font-size: inherit;
+      height: 40px;
+      line-height: 40px;
+      outline: none;
+      padding: 0 10px;
+      max-width: 40px;
+      text-align: center;
+    }
+
+    .ip-point{
+      color: #666;
+      font-weight: bold;
+      line-height: 40px;
+      width: 3px;
+      display: inline-block;
     }
   }
 </style>
